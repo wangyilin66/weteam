@@ -7,19 +7,18 @@ manifest.json内的transformPx已经更改为true，可以直接使用px，会�
 
 页面布局使用flexbox布局。
 
-
 公用ajax请求封装在utils=>ajax.js内。
 
 调用方法:
+
 import $ajax  from '@/utils/ajax.js';
 
 $ajax.get({
-url: "...",
-param: {
-
-}
-
-	console.log(res.data)			
-})
-
+	url: `api/news`,
+	param: {
+	
+	}
+}).then((res) => {
+		console.log(res.data)			
+});
  

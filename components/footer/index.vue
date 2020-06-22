@@ -20,9 +20,7 @@
 		},
 		methods: {
          tosay(e){
-			console.log(e);
-			 
-			          
+			console.log(e);	          
 		 }
 		}
 	}
@@ -38,7 +36,8 @@
 		display: flex;
 	}
 	.wefooter view{
-		width: 25vw;
+		/* width: 25vw; */
+		flex: 1;
 		height: 80px;
 		text-align: center;
 		line-height: 80px;
