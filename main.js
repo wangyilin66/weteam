@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App'
-import './common/css/style.scss'
 
 Vue.config.productionTip = false
 

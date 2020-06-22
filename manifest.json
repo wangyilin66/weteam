@@ -8,6 +8,7 @@
   "app-plus": {
     "nvueCompiler": "uni-app",
     "compilerVersion": 3,
+		"runmode":"liberate",
     "modules": {},
     "distribute": {
       "android": {

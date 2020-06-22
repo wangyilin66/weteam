@@ -1,6 +1,6 @@
 <template>
 	<view>
-		toubu 
+		
 	</view>
 </template>
 
