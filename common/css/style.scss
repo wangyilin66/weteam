@@ -1,0 +1,50 @@
+
+
+
+// 文本
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+// flex
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
+@each $key, $value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+$ai-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch
+);
+@each $key, $value in $ai-jc {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}

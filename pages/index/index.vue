@@ -1,16 +1,14 @@
 <template>
-	<view class="container">
-		<Footer></Footer>
+	<view class="container d-flex">
+		<Header></Header>
 	</view>
 </template>
 
 <script>
-	import Footer from '../../components/footer/index.vue';
-	import $ajax  from '@/utils/ajax.js';
-	console.log($ajax);
+	import Header from './components/header/header'
 	export default {
 		components:{
-			Footer,
+			Header
 		},
 		data() {
 			return {
@@ -21,15 +19,6 @@
           
 		},
 		onLoad() {
-			console.log(this);
-		$ajax.get({
-			url: `api/news`,
-			param: {
-			
-			}
-		}).then((res) => {
-				console.log(res.data)			
-		})
 			
 		}
 	}
@@ -37,8 +26,5 @@
 
 <style>
 	.container {
-		padding: 20px;
-		font-size: 14px;
-		line-height: 24px;
 	}
 </style>
