@@ -14,7 +14,13 @@
 		},
 		{
 			"path": "pages/passenger/passenger",
-			"style": {}
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		},
 		{
 			"path": "pages/house/house",
@@ -26,7 +32,9 @@
 		},
 		{
 			"path": "pages/profile/profile",
-			"style": {}
+			"style": {
+				"navigationStyle":"custom"
+			}
 		}, {
 			"path": "pages/index/Search/Search",
 			"style": {
@@ -37,7 +45,11 @@
 				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/login/Login",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "优品找房",

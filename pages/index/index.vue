@@ -6,6 +6,7 @@
       title=""
       title-color="#fff"
       :background="background"
+			height="50"
     >
       <view class="slot-wrap"><Header @search="handleClickSearch()"></Header></view>
     </u-navbar>

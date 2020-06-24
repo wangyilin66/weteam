@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		房源
 	</view>
 </template>
 
