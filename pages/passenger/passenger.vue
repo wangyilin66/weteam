@@ -20,8 +20,8 @@
     </u-navbar>
 		<view class="content">
 			<Screen></Screen>
-			<view class="">
-				<Guest></Guest>
+			<view class="" v-for="(item,index) in guestlist" :key="index"> 
+				<Guest :item="item"></Guest>
 			</view>
 		</view>
   </view>
@@ -56,6 +56,24 @@ export default {
 			  },
 			  
 			],
+			guestlist:[
+				{
+					name:'张三1',
+					rate:3
+				},
+				{
+					name:'张三2',
+					rate:3
+				},
+				{
+					name:'张三3',
+					rate:5
+				},
+				{
+					name:'张三4',
+					rate:1
+				},
+			]
 		};
 	},
 	onLaod(){
