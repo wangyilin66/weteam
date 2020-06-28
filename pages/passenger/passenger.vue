@@ -9,11 +9,11 @@
       height="50"
     >
       <view class="slot-wrap">
-        <view class="">
+        <view class="" @click="handleClickClue()">
           <u-icon name="search" color="#fff" size="34"></u-icon>
         </view>
         <TabNav :tab-width="420" :list="tabList" :current="current" @handleChange="handleChange"></TabNav>
-				<view class="">
+				<view class="" @click="handleClickAdd()">
 					<u-icon name="plus" color="#fff" size="34"></u-icon>
 				</view>
       </view>
@@ -21,7 +21,7 @@
 		<view class="content">
 			<Screen></Screen>
 			<view class="" v-for="(item,index) in guestlist" :key="index"> 
-				<Guest :item="item"></Guest>
+				<Guest :item="item" @handleClick="todetail"></Guest>
 			</view>
 		</view>
   </view>
@@ -82,6 +82,24 @@ export default {
 	methods:{
 		handleChange(index){
 			this.current = index
+		},
+		todetail(item){
+			console.log(item.name);
+			uni.navigateTo({
+				url:`/pages/passenger/detail/detail?item=${encodeURIComponent(JSON.stringify(item))}`
+			})
+		},
+		// 客源线索
+		handleClickClue(){
+			uni.navigateTo({
+				url:"/pages/passenger/guest-clue/guest-clue"
+			})
+		},
+		// 录入客源
+		handleClickAdd(){
+			uni.navigateTo({
+				url:"/pages/passenger/logging/logging"
+			})
 		}
 	}
 };

@@ -44,6 +44,7 @@ export default {
   box-sizing: border-box;
   border-bottom: 1rpx solid #e1e1e1;
   padding: 0 40rpx;
+	
   .screen_type_list {
     flex: 1;
     font-size: 28rpx;

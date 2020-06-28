@@ -49,6 +49,36 @@
             "path" : "pages/login/Login",
             "style" : {}
         }
+        ,{
+            "path" : "pages/passenger/detail/detail",
+            "style" : {
+							"navigationStyle": "custom", // 隐藏系统导航栏
+							"navigationBarTextStyle": "white", //
+							"app-plus": {
+								"scrollIndicator": "none"
+							}
+						}
+        }
+        ,{
+            "path" : "pages/passenger/logging/logging",
+           "style" : {
+           	"navigationStyle": "custom", // 隐藏系统导航栏
+           	"navigationBarTextStyle": "white", //
+           	"app-plus": {
+           		"scrollIndicator": "none"
+           	}
+           }
+        }
+        ,{
+            "path" : "pages/passenger/guest-clue/guest-clue",
+            "style" : {
+							"navigationStyle": "custom", // 隐藏系统导航栏
+							"navigationBarTextStyle": "white", //
+							"app-plus": {
+								"scrollIndicator": "none"
+							}
+						}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

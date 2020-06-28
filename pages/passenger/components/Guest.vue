@@ -1,5 +1,5 @@
 <template>
-  <view class="guest d-flex jc-between ai-center">
+  <view class="guest d-flex jc-between ai-center" @click="handleClick(item)">
     <view class="left d-flex flex-column jc-between">
       <view class="name_msg d-flex ai-center">
         <view class="name">
@@ -24,14 +24,14 @@
           活跃客户
         </view>
       </view>
-      <view class="">
-        155-160万 | 98-120平 | 1-3居
+      <view class="floor_detail">
+        155-160万丨98-120平丨1-3居
       </view>
-      <view class="">
-        进度：2看
+      <view class="tips_common">
+        <text class="tips_color">进度：</text>2看
       </view>
-      <view class="">
-        上次维护时间： 2020-05-21
+      <view class="tips_common">
+        <text class="tips_color">上次维护时间：</text>2020-05-21
       </view>
     </view>
     <view class="right d-flex flex-column jc-between">
@@ -57,6 +57,11 @@ export default {
   data() {
     return {};
   },
+	methods:{
+		handleClick(item){
+			this.$emit('handleClick',item)
+		}
+	}
 };
 </script>
 
@@ -106,6 +111,16 @@ export default {
         color: #696969;
       }
     }
+		// 房子信息
+		.floor_detail{
+			color: #444;
+			font-weight: 500;
+		}
+		.tips_common{
+			.tips_color{
+				color: #999;
+			}
+		}
   }
   .right {
     height: 100%;
