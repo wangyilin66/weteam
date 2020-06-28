@@ -1,15 +1,127 @@
 {
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationStyle":"custom"
-			// "navigationBarTitleText": "uni-ui基础项目"
+			"path": "pages/login/Login",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"background": "#000"
+				}
+			}
+		},
+		{
+			"path": "pages/login/components/forgetpsw/index",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"background": "#000"
+				}
+			}
+		},
+		{
+			"path": "pages/login/components/loginface/index",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"background": "#000"
+				}
+			}
+		},
+		{
+			"path": "pages/login/components/loginpsw/index",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"background": "#000"
+				}
+			}
+		}, {
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/passenger/passenger",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/house/house",
+			"style": {}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/index/Search/Search",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		}
-	}]
-	// "globalStyle": {
-	// 	"navigationBarTextStyle": "white",
-	// 	"navigationBarTitleText": "uni-app",
-	// 	"navigationBarBackgroundColor": "#007AFF",
-	// 	"backgroundColor": "#FFFFFF"
-	// }
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "优品找房",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#4D5C56",
+		"selectedColor": "#42CD94",
+		"backgroundColor": "#fff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tab_home_nor.png",
+				"selectedIconPath": "static/tab_home_light.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/passenger/passenger",
+				"iconPath": "static/tab_youkan_nor.png",
+				"selectedIconPath": "static/tab_youkan_light.png",
+				"text": "客源"
+			},
+			{
+				"pagePath": "pages/house/house",
+				"iconPath": "static/tab_youkan_nor.png",
+				"selectedIconPath": "static/tab_youkan_light.png",
+				"text": "房源"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tab_youkan_nor.png",
+				"selectedIconPath": "static/tab_youkan_light.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"iconPath": "static/tab_youkan_nor.png",
+				"selectedIconPath": "static/tab_youkan_light.png",
+				"text": "我的"
+			}
+		]
+	}
 }
