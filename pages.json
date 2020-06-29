@@ -79,6 +79,15 @@
 							}
 						}
         }
+        ,{
+            "path" : "pages/tools/contract-management/contract-management",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/tools/article/article",
+            "style" : {
+						}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

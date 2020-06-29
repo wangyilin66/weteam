@@ -4,30 +4,73 @@
 			<view class="slot-right" slot="right"><u-icon name="question-circle" color="#fff" size="42"></u-icon></view>
 		</u-navbar>
 		<view class="main">
-			<view class="user_msg">
-				<view class="title">基本信息</view>
-				<view class="">
-					<u-form :model="form" ref="uForm">
+			<u-form :model="form" ref="uForm">
+				<view class="user_msg">
+					<view class="title">基本信息</view>
+					<view class="">
 						<u-form-item label="姓名" required prop="name"><u-input v-model="form.name" /></u-form-item>
-						<u-form-item label="手机" required prop="mobile"><u-input v-model="form.mobile" /></u-form-item>
-						<u-form-item label="性别">
-							<!-- 		<u-radio-group v-model="sex" @change="radioGroupChange">
-								<u-radio 
-				@change="radioChange" 
-				v-for="(item, index) in list" :key="index" 
-				:name="item.name"
-				:disabled="item.disabled"
-			>
-				{{item.name}}
-			</u-radio>
-							</u-radio-group> -->
+						<u-form-item label="手机" required prop="mobile"><u-input maxlength="11" v-model="form.mobile" /></u-form-item>
+						<view class="">新增联系方式</view>
+						<u-form-item label="性别" required prop="sex">
+							<u-radio-group size="46" v-model="form.sex" @change="radioGroupChange" class="d-flex ai-center jc-end">
+								<u-radio shape="circle" active-color="#42CD94" v-for="(item, index) in list" :key="index" :name="item.name" :disabled="item.disabled">{{ item.name }}</u-radio>
+							</u-radio-group>
 						</u-form-item>
-					</u-form>
+						<u-form-item label="委托来源" label-width="160" required prop="laiyuan">
+							<u-input placeholder="请选择" v-model="form.laiyuan" type="select" :select-open="actionSheetShow" @click="actionSheetShow = true" />
+						</u-form-item>
+					</view>
 				</view>
-			</view>
-			<view class="user_msg"><view class="title">备用联系人信息</view></view>
-			<view class="user_msg"><view class="title">其他</view></view>
-			<view class="user_msg"><view class="title">客户需求</view></view>
+				<!-- 备用联系人 -->
+				<view class="alternate_contact">
+					<view class="title">备用联系人</view>
+					<view class="">
+						<u-form-item label="姓名" prop="aname"><u-input v-model="form.aname" /></u-form-item>
+						<u-form-item label="手机" prop="amobile"><u-input maxlength="11" v-model="form.amobile" /></u-form-item>
+						<u-form-item label="性别" prop="asex">
+							<u-radio-group size="46" v-model="form.asex" @change="radioGroupChangeOne" class="d-flex ai-center jc-end">
+								<u-radio shape="circle" active-color="#42CD94" v-for="(item, index) in list" :key="index" :name="item.name" :disabled="item.disabled">{{ item.name }}</u-radio>
+							</u-radio-group>
+						</u-form-item>
+					</view>
+				</view>
+				<!-- 其他 -->
+				<view class="others"><view class="title">其他</view></view>
+				<!-- 客户需求 -->
+				<view class="demand">
+					<view class="" v-for="(item, i) in form.demand" :key="i">
+						<view class="title d-flex jc-between">
+							客户需求{{ i + 1 }}
+							<view class="" v-if="i < 1"><u-icon name="plus" color="#41CD93" size="44" @click="form.demand.push({})"></u-icon></view>
+							<view class="" v-else><u-icon name="close" color="#F14D53" size="44" @click="form.demand.splice(i, 1)"></u-icon></view>
+						</view>
+						<view class="">
+							<u-form-item label="首付预算" label-width="160"><u-input v-model="item.budget" /></u-form-item>
+							<u-form-item label="购房区域" label-width="160"><u-input v-model="item.region" /></u-form-item>
+							<u-form-item label="交房类型" label-width="160">
+								<u-input v-model="item.houseTypes" type="select" :select-open="actionSheetShowHouse" @click="actionSheetShowHouse = true" />
+							</u-form-item>
+							<u-form-item label="居室"><u-input v-model="item.house" /></u-form-item>
+							<u-form-item label="面积"><u-input v-model="item.area" /></u-form-item>
+						</view>
+					</view>
+				</view>
+				<!-- 备注 -->
+				<view class="others">
+					<view class="title">备注</view>
+					<view class=""><u-input v-model="form.remarks" :type="type" :border="border" :height="height" :auto-height="autoHeight" /></view>
+				</view>
+			</u-form>
+			<u-button @click="submit">确认添加</u-button>
+			<!-- 委托来源 -->
+			<u-action-sheet :list="actionSheetList" v-model="actionSheetShow" @click="actionSheetCallback"></u-action-sheet>
+			<!-- 名下房产 -->
+			<!-- 贷款情况 -->
+			<!-- 所在区域 -->
+			<!-- 首付预算 -->
+			<!-- 购房区域 -->
+			<!-- 交房类型 -->
+			<u-action-sheet :list="houseList" v-model="actionSheetShowHouse" @click="actionHouseCallback"></u-action-sheet>
 		</view>
 	</view>
 </template>
@@ -36,14 +79,35 @@
 export default {
 	data() {
 		return {
+			border: true,
 			background: {
 				backgroundImage: 'linear-gradient(-75deg, rgba(18, 183, 162, 1) 0%, rgba(50, 197, 153, 1) 100%)'
 			},
 			form: {
-				name: '',
-				mobile: '',
-				sex: 1
+				name: '', //客户姓名
+				mobile: '', //手机号
+				sex: '', //性别
+				rate: '', //意愿星级
+				laiyuan: '', //来源
+				contacts: [], //联系人
+				demand: [{}] //客户需求
 			},
+			type: 'textarea',
+			border: true, //文本框线
+			height: 100, //文本框高度
+			autoHeight: true, //自动高度
+			list: [
+				{
+					name: '男',
+					checked: false,
+					disabled: false
+				},
+				{
+					name: '女',
+					checked: false,
+					disabled: false
+				}
+			],
 			rules: {
 				name: [
 					{
@@ -56,7 +120,7 @@ export default {
 					{
 						required: true,
 						message: '请输入正确的手机号',
-						trigger: ['blur', 'change']
+						trigger: ['blur']
 					},
 					{
 						// 自定义验证函数，见上说明
@@ -67,14 +131,86 @@ export default {
 						},
 						message: '手机号码不正确',
 						// 触发器可以同时用blur和change
-						trigger: ['change', 'blur']
+						trigger: ['blur']
+					}
+				],
+				sex: [
+					{
+						required: true,
+						message: '请选择性别',
+						trigger: ['change']
+					}
+				],
+				rate: [
+					{
+						required: true,
+						message: '请选择客户意愿',
+						trigger: ['change']
+					}
+				],
+				laiyuan: [
+					{
+						required: true,
+						message: '请选择原因',
+						trigger: ['change']
 					}
 				]
-			}
+			},
+			// 来源选项
+			actionSheetList: [
+				{
+					text: '房东'
+				},
+				{
+					text: '二房东'
+				}
+			],
+			actionSheetShow: false, //来源选项
+			// 名下房产
+			houseList: [
+				{
+					text: '商品房'
+				},
+				{
+					text: '回迁房'
+				}
+			],
+			actionSheetShowHouse: false //交房类型
 		};
 	},
 	onReady() {
 		this.$refs.uForm.setRules(this.rules);
+	},
+	methods: {
+		radioGroupChange(val) {
+			console.log(val);
+			console.log(this.form);
+		},
+		radioGroupChangeOne(val) {
+			console.log(val, 'one');
+			console.log(this.form, 'one');
+		},
+		changeRate(el) {
+			console.log(el);
+			this.form.rate = el;
+		},
+		submit() {
+			this.$refs.uForm.validate(valid => {
+				if (valid) {
+					console.log('验证通过');
+				} else {
+					console.log('验证失败');
+				}
+			});
+		},
+		// 房屋来源
+		actionSheetCallback(index) {
+			this.form.laiyuan = this.actionSheetList[index].text;
+		},
+		// 交房类型
+		actionHouseCallback(index) {
+			let obj = {houseTypes:this.houseList[index].text}
+		}
 	}
 };
 </script>
@@ -98,6 +234,14 @@ export default {
 		// 用户基本信息
 		.user_msg {
 		}
+	}
+	/deep/.u-form-item--right__content {
+		height: 100%;
+	}
+	/deep/.u-form-item--right__content__slot {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 	}
 }
 </style>
