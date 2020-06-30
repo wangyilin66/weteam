@@ -7,7 +7,7 @@
 					<view class="nav_item" :class="{ active: item._id === isActive }" v-for="item in navList" @click="handleClickCheck(item._id)">
 						<view class="nav_icon">
 							<view class="icon_box">
-								<u-icon :name="item.icon" size="50"></u-icon>
+								<image :src="item._id === isActive?item.imgUrl_act:item.imgUrl" mode=""></image>
 								<u-badge v-show="item.isDot" :is-dot="true" size="mini" :offset="[-4, -4]"></u-badge>
 							</view>
 						</view>
@@ -59,25 +59,33 @@ export default {
 					name: '平台分发',
 					_id: 1,
 					icon: 'calendar',
-					isDot: true
+					isDot: true,
+					imgUrl:'/static/images/guest/platform.png',
+					imgUrl_act:'/static/images/guest/platform-act.png'
 				},
 				{
 					name: '400电话',
 					_id: 2,
 					icon: 'phone',
-					isDot: false
+					isDot: false,
+					imgUrl:'/static/images/guest/phone.png',
+					imgUrl_act:'/static/images/guest/phone-act.png',
 				},
 				{
 					name: 'IM显示',
 					_id: 3,
 					icon: 'chat',
-					isDot: false
+					isDot: false,
+					imgUrl:'/static/images/guest/message.png',
+					imgUrl_act:'/static/images/guest/message-act.png',
 				},
 				{
 					name: '共享池',
 					_id: 4,
 					icon: 'chrome-circle-fill',
-					isDot: false
+					isDot: false,
+					imgUrl:'/static/images/guest/share.png',
+					imgUrl_act:'/static/images/guest/share-act.png',
 				}
 			]
 		};
@@ -125,7 +133,12 @@ export default {
 				.icon_box {
 					margin: 0 auto;
 					position: relative;
-					width: fit-content;
+					width: 53rpx;
+					height: 53rpx;
+					image{
+						width:100%;
+						height: 100%;
+					}
 				}
 				.nav_name {
 					margin-top: 20rpx;

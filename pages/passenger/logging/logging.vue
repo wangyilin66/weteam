@@ -10,7 +10,7 @@
 					<view class="">
 						<u-form-item label="姓名" required prop="name"><u-input v-model="form.name" /></u-form-item>
 						<u-form-item label="手机" required prop="mobile"><u-input maxlength="11" v-model="form.mobile" /></u-form-item>
-						<view class="">新增联系方式</view>
+						<!-- <view class="">新增联系方式</view> -->
 						<u-form-item label="性别" required prop="sex">
 							<u-radio-group size="46" v-model="form.sex" @change="radioGroupChange" class="d-flex ai-center jc-end">
 								<u-radio shape="circle" active-color="#42CD94" v-for="(item, index) in list" :key="index" :name="item.name" :disabled="item.disabled">{{ item.name }}</u-radio>
@@ -35,20 +35,28 @@
 					</view>
 				</view>
 				<!-- 其他 -->
-				<view class="others"><view class="title">其他</view></view>
+				<view class="others">
+					<view class="title">其他</view>
+					<view class="">
+						<u-form-item label="名下房产" label-width="160"><u-input v-model="form.budget" type="select" /></u-form-item>
+						<u-form-item label="贷款情况" label-width="160"><u-input v-model="form.budget" type="select" /></u-form-item>
+						<u-form-item label="所在区域" label-width="160"><u-input v-model="form.budget" type="select" /></u-form-item>
+					</view>
+				</view>
 				<!-- 客户需求 -->
 				<view class="demand">
+					<view class="title d-flex jc-between">
+						客户需求
+						<view class=""><u-icon name="plus" color="#41CD93" size="44" @click="form.demand.push({})"></u-icon></view>
+					</view>
 					<view class="" v-for="(item, i) in form.demand" :key="i">
-						<view class="title d-flex jc-between">
-							客户需求{{ i + 1 }}
-							<view class="" v-if="i < 1"><u-icon name="plus" color="#41CD93" size="44" @click="form.demand.push({})"></u-icon></view>
-							<view class="" v-else><u-icon name="close" color="#F14D53" size="44" @click="form.demand.splice(i, 1)"></u-icon></view>
-						</view>
+						<view class="title d-flex jc-between">客户需求 <u-icon name="close" color="#F14D53" size="44" @click="form.demand.splice(i, 1)"></u-icon></view>
 						<view class="">
 							<u-form-item label="首付预算" label-width="160"><u-input v-model="item.budget" /></u-form-item>
 							<u-form-item label="购房区域" label-width="160"><u-input v-model="item.region" /></u-form-item>
 							<u-form-item label="交房类型" label-width="160">
-								<u-input v-model="item.houseTypes" type="select" :select-open="actionSheetShowHouse" @click="actionSheetShowHouse = true" />
+								<u-input v-model="item.houseTypes" :disabled="true" @click="handleInput(i)" />
+								<!-- <u-input v-model="item.houseTypes" type="text" :select-open="actionSheetShowHouse" @click="actionSheetShowHouse = true" /> -->
 							</u-form-item>
 							<u-form-item label="居室"><u-input v-model="item.house" /></u-form-item>
 							<u-form-item label="面积"><u-input v-model="item.area" /></u-form-item>
@@ -76,6 +84,7 @@
 </template>
 
 <script>
+import Demand from '../components/demand.vue' 
 export default {
 	data() {
 		return {
@@ -90,7 +99,10 @@ export default {
 				rate: '', //意愿星级
 				laiyuan: '', //来源
 				contacts: [], //联系人
-				demand: [{}] //客户需求
+				hasHouse:'',//名下房产
+				loan:'',//贷款情况
+				area:'',//所在区域
+				demand: [] //客户需求
 			},
 			type: 'textarea',
 			border: true, //文本框线
@@ -181,6 +193,13 @@ export default {
 	onReady() {
 		this.$refs.uForm.setRules(this.rules);
 	},
+	wacth:{
+		"form.demand":function(oldValue,newvalue){
+				console.log(oldValue,'oldValue')
+				console.log(newvalue,'newvalue')
+			deep:true
+			},
+	},
 	methods: {
 		radioGroupChange(val) {
 			console.log(val);
@@ -207,9 +226,20 @@ export default {
 		actionSheetCallback(index) {
 			this.form.laiyuan = this.actionSheetList[index].text;
 		},
+		handleInput(i){
+			console.log(i)
+			this.actionSheetShowHouse = true
+			this.houseIndex = i
+		},
 		// 交房类型
 		actionHouseCallback(index) {
-			let obj = {houseTypes:this.houseList[index].text}
+			let list = JSON.parse(JSON.stringify(this.houseList))
+			let houseTypes = list[index].text
+			debugger
+			// console.log(this.form.demand[this.houseIndex]['houseTypes'] = houseTypes)
+			this.form.demand[this.houseIndex] = Object.assign({},{houseTypes:houseTypes})
+			console.log(this.form)
+			// .push({houseTypes})
 		}
 	}
 };
