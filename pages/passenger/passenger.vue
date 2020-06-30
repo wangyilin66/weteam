@@ -1,32 +1,37 @@
 <template>
-  <view class="container">
-    <u-navbar
-      :is-back="false"
-      :is-fixed="true"
-      title=""
-      title-color="#fff"
-      :background="background"
-      height="50"
-    >
-      <view class="slot-wrap">
-        <view class="">
-          <u-icon name="search" color="#fff" size="34"></u-icon>
-        </view>
-        <TabNav :tab-width="420" :list="tabList" :current="current" @handleChange="handleChange"></TabNav>
+	<view class="container">
+		<u-navbar :is-back="false" :is-fixed="true" title="" title-color="#fff" :background="background" height="50">
+			<view class="slot-wrap">
+				<view class="" @click="handleClickClue()"><u-icon name="search" color="#fff" size="34"></u-icon></view>
+				<TabNav :tab-width="420" :list="tabList" :current="current" @handleChange="handleChange"></TabNav>
+				<view class="" @click="handleClickAdd()"><u-icon name="plus" color="#fff" size="34"></u-icon></view>
+			</view>
+		</u-navbar>
+		<view class="main">
+			<view class="" v-show="this.current === 0">
+				<Screen @handleCheck="handleCheck"></Screen>
 				<view class="">
-					<u-icon name="plus" color="#fff" size="34"></u-icon>
+					<view class="" v-for="(item, index) in guestlist" :key="index"><Guest :item="item" @handleClick="todetail"></Guest></view>
 				</view>
-      </view>
-    </u-navbar>
-		<view class="content">
-			<Screen></Screen>
-			<view class="" v-for="(item,index) in guestlist" :key="index"> 
-				<Guest :item="item"></Guest>
+			</view>
+			<view class="" v-show="this.current === 1">
+				<topPopup :popup-tab="popList" :popup-btn="popBtn">
+					<view class="" style="background: #fff;">
+						123
+					</view>
+				</topPopup>
+			</view>
+			<view class="" v-show="this.current === 2">
+				<view class="shared_pool">
+					<view class="share_item d-flex jc-between ai-center" v-for="(item,i) in shareList" :key="i" @click="handleShareClick(item._id)">
+						<view class="">{{item.name}}</view>
+						<view class=""><u-icon name="arrow-right" size="24" color="#999"></u-icon></view>
+					</view>
+				</view>
 			</view>
 		</view>
-  </view>
+	</view>
 </template>
-
 
 <script>
 import TabNav from './components/tab-common/tab-common.vue';
@@ -131,7 +136,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.status_bar {
+	height: var(--status-bar-height);
+	width: 100%;
+}
 .container {
 	height: 100%;
 	background: #f5f5f5;
