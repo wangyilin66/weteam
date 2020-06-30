@@ -9,12 +9,12 @@
 		<image class="p_c_pic" src="../../../../static/images/login/genggaiok.png"></image>
 		<view class="p_c_tit">密码修改成功</view>
 	</view>
-	  <view class="m_header">
-		  <view class="backpage">
-			  <u-icon class="backicon" v-on:tap="backpage" name="arrow-left" color="#434343" size="44"></u-icon>
-			  <view class="b_title">找回密码</view>
-			  </view>
-	  </view>
+		<view class="navgationbox">
+			<view class="nb_cont">
+				<u-icon v-on:tap="backpage" class="c_icon" name="arrow-left" size="36"></u-icon>
+				<view class="c_title">修改密码</view>
+			</view>
+		</view>
 		<view class="inputbox">
 			<view class="ib_phone">
 				<input class="phoneinp" @input="handlephonekeyup($event)" type="text" placeholder-style='color:rgba(205,207,207,1);'
@@ -271,7 +271,44 @@
 	.main{
 	width: 100vw;
 	height: 100vh;
-	box-sizing: border-box; 
+	box-sizing: border-box;
+	padding-top: 176rpx;
+	}
+	.navgationbox {
+		width: 750rpx;
+		height: 176rpx;
+		box-sizing: border-box;
+		padding-top: 116rpx;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 99;
+		background: linear-gradient(-75deg, rgba(18, 183, 162, 1) 0%, rgba(50, 197, 153, 1) 100%);
+		box-shadow: 0rpx 8rpx 10rpx 0rpx rgba(3, 47, 41, 0.1);
+	}
+	
+	.nb_cont {
+		width: 100vw;
+		display: flex;
+		box-sizing: border-box;
+		line-height: 36rpx;
+		position: relative;
+	}
+	
+	.c_icon {
+		color: rgba(255, 255, 255, 1);
+		position: absolute;
+		top: 0rpx;
+		left: 40rpx;
+	}
+	
+	.c_title {
+		width: 100vw;
+		text-align: center;
+		font-size: 36rpx;
+		font-family: PingFang SC;
+		font-weight: 500;
+		color: rgba(255, 255, 255, 1);
 	}
 	.backpage{
 		width: 100vw;

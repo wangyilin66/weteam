@@ -3,6 +3,7 @@
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [{
+		//手机号登录
 			"path": "pages/login/Login",
 			"style": {
 				"app-plus": {
@@ -12,6 +13,7 @@
 			}
 		},
 		{
+			//忘记密码
 			"path": "pages/login/components/forgetpsw/index",
 			"style": {
 				"app-plus": {
@@ -21,6 +23,7 @@
 			}
 		},
 		{
+			//人脸识别登录
 			"path": "pages/login/components/loginface/index",
 			"style": {
 				"app-plus": {
@@ -30,6 +33,7 @@
 			}
 		},
 		{
+			//账号密码登录
 			"path": "pages/login/components/loginpsw/index",
 			"style": {
 				"app-plus": {
@@ -66,11 +70,77 @@
 			"style": {}
 		},
 		{
+			//我的
 			"path": "pages/profile/profile",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
 			}
-		}, {
+		}, 
+		{
+			//我的 => 浏览记录
+			"path": "pages/profile/components/historypage/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			//我的 => 我的关注
+			"path": "pages/profile/components/attentionpage/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			//我的 => 修改密码
+			"path": "pages/profile/components/forgetpsw/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			//我的 => 设置
+			"path": "pages/profile/components/setpage/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			//我的 => 自动回复设置
+			"path": "pages/profile/components/responsepage/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			//我的 => PC登录管理
+			"path": "pages/profile/components/pcloginsetpage/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "white", //
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
 			"path": "pages/index/Search/Search",
 			"style": {
 				"navigationStyle": "custom", // 隐藏系统导航栏

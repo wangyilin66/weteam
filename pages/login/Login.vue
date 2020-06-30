@@ -64,20 +64,25 @@
 				let phoneflag = this.$u.test.mobile(ptext);
 				if (phoneflag) {
 					this.phoneflag = false;
-				}
-				if (phoneflag) {
+				} 
+				if(phoneflag && this.code.length > 0){
 					this.loginflag = false;
-				} else {
+				}else{
 					this.loginflag = true;
 				}
 			},
 			handlecodekeyup() {
 				let ptext = this.phone;
-
-				if ( this.code.length > 0) {
+				let phoneflag = this.$u.test.mobile(ptext);
+				if (this.code.length > 0) {
 					this.codeflag = false;
 				} else {
 					this.codeflag = true;
+				}
+				if(phoneflag && this.code.length > 0){
+					this.loginflag = false;
+				}else{
+					this.loginflag = true;
 				}
 			},
 			handleSendPhone() {

@@ -93,12 +93,18 @@
 				let ptext = this.phone;
 				let phoneflag = this.$u.test.mobile(ptext);
 				
-				if ( this.code.length > 0) {		
+				if (this.code.length > 0) {		
 					this.codeflag = false;
 				} else {
 					this.codeflag = true;
 					this.pswtext = '*请输入密码';
 				}
+				if (phoneflag && this.code.length > 0) {
+					this.loginflag = false;
+				} else {
+					this.loginflag = true;
+				} 
+			
 			},
 			// handleSendPhone(){
 			// 	let ptext = this.phone;
