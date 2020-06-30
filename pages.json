@@ -70,77 +70,11 @@
 			"style": {}
 		},
 		{
-			//我的
 			"path": "pages/profile/profile",
 			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
+				"navigationStyle":"custom"
 			}
-		}, 
-		{
-			//我的 => 浏览记录
-			"path": "pages/profile/components/historypage/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
-			//我的 => 我的关注
-			"path": "pages/profile/components/attentionpage/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
-			//我的 => 修改密码
-			"path": "pages/profile/components/forgetpsw/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
-			//我的 => 设置
-			"path": "pages/profile/components/setpage/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
-			//我的 => 自动回复设置
-			"path": "pages/profile/components/responsepage/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
-			//我的 => PC登录管理
-			"path": "pages/profile/components/pcloginsetpage/index",
-			"style": {
-				"navigationStyle": "custom", // 隐藏系统导航栏
-				"navigationBarTextStyle": "white", //
-				"app-plus": {
-					"scrollIndicator": "none"
-				}
-			}
-		},{
+		}, {
 			"path": "pages/index/Search/Search",
 			"style": {
 				"navigationStyle": "custom", // 隐藏系统导航栏
@@ -150,8 +84,50 @@
 				}
 			}
 		}
-
-	],
+	    ,{
+            "path" : "pages/login/Login",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/passenger/detail/detail",
+            "style" : {
+							"navigationStyle": "custom", // 隐藏系统导航栏
+							"navigationBarTextStyle": "white", //
+							"app-plus": {
+								"scrollIndicator": "none"
+							}
+						}
+        }
+        ,{
+            "path" : "pages/passenger/logging/logging",
+           "style" : {
+           	"navigationStyle": "custom", // 隐藏系统导航栏
+           	"navigationBarTextStyle": "white", //
+           	"app-plus": {
+           		"scrollIndicator": "none"
+           	}
+           }
+        }
+        ,{
+            "path" : "pages/passenger/guest-clue/guest-clue",
+            "style" : {
+							"navigationStyle": "custom", // 隐藏系统导航栏
+							"navigationBarTextStyle": "white", //
+							"app-plus": {
+								"scrollIndicator": "none"
+							}
+						}
+        }
+        ,{
+            "path" : "pages/tools/contract-management/contract-management",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/tools/article/article",
+            "style" : {
+						}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "优品找房",
